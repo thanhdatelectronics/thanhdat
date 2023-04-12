@@ -99,7 +99,7 @@ const Filters = (props) => {
     } else {
       axios
         .get(
-          `https://ecom-oto.vercel.app/api/products/fitercategory?categories=${categoryString}&brands=${brandString}`
+          `${process.env.REACT_APP_API_URL}products/fitercategory?categories=${categoryString}&brands=${brandString}`
         )
         .then((response) => {
           const datars = response.data.fproducts;

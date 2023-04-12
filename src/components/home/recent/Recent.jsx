@@ -101,7 +101,7 @@ const Recent = ({ titleprodcut1, titleprodcut2 }) => {
   useEffect(() => {
     const getInfoweb = async () => {
       await axios
-        .get("https://ecom-oto.vercel.app/api/home/")
+        .get(`${process.env.REACT_APP_API_URL}home/`)
         .then((response) => {
           setHomeapi(response.data);
           settitle1(response.data[0].titlesanpham1);
