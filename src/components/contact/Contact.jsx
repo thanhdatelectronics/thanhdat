@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "./contact.css";
+import LoadingPage from "../loadingPage/loadingpage";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -144,7 +145,7 @@ const Contact = () => {
       </section>
     </>
   ) : (
-    <></>
+    <LoadingPage size={32} />
   );
 };
 

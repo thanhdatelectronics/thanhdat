@@ -7,6 +7,7 @@ import img3 from "../images/tramsac.jpg";
 import "./Services.css";
 import axios from "axios";
 import imgerror from "../images/imgerror.png";
+import LoadingPage from "../loadingPage/loadingpage";
 
 const Services = () => {
   const [data, setData] = useState([]);
@@ -37,7 +38,7 @@ const Services = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  return (
+  return data.length != 0 && imgeHeader != undefined ? (
     <>
       <section className="services mb ">
         <Back name="Dịch vụ" title={titleH} cover={imgeHeader} />
@@ -97,7 +98,7 @@ const Services = () => {
         </div>
       </section>
     </>
-  );
+  ) : <LoadingPage size={32} />;
 };
 
 export default Services;

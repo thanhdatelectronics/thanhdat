@@ -4,6 +4,7 @@ import Awards from "./awards/Awards";
 import Featured from "./featured/Featured";
 import Hero from "./hero/Hero";
 import Recent from "./recent/Recent";
+import LoadingPage from "../loadingPage/loadingpage";
 const Home = () => {
   const [home, setHome] = useState([]);
   useEffect(() => {
@@ -35,7 +36,7 @@ const Home = () => {
       />
     </>
   ) : (
-    <div> loading... </div>
+    <LoadingPage size={35}/>
   );
 };
 

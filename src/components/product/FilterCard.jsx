@@ -10,6 +10,7 @@ import { getBrandsSlugCTN } from "../../features/brand/brandSlice";
 import { getCategorysSlugCTN } from "../../features/pcategory/pcategorySlice";
 import imgerror from "../images/imgerror.png";
 import { toast } from "react-toastify";
+import LoadingPage from "../loadingPage/loadingpage";
 const Filters = (props) => {
   const { id } = useParams();
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -121,11 +122,10 @@ const Filters = (props) => {
     ).map((page) => (
       <li key={page}>
         <button
-          className={`px-3 py-2 leading-tight text-gray-500 bg-white border ${
-            currentPage === page
+          className={`px-3 py-2 leading-tight text-gray-500 bg-white border ${currentPage === page
               ? "bg-gray-100 text-gray-700"
               : "border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-          }`}
+            }`}
           onClick={() => handleClick(page)}
         >
           {page}
@@ -210,55 +210,56 @@ const Filters = (props) => {
                 </div>
               </aside>
               <main className="md:w-2/3 lg:w-3/4 w-4/4 px-3">
-                <div className="mt-4 grid gap-y-10 gap-x-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-                  {products.map((item) => (
-                    <div
-                      key={item._id}
-                      className="group relative bg-color-card rounded-md shadow overflow-hidden"
-                    >
-                      <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-color-basic group-hover:opacity-75 lg:aspect-none lg:h-50">
-                        <img
-                          src={
-                            item.imagesDefault
-                              ? item.imagesDefault.secure_url
-                              : imgerror
-                          }
-                          className="h-[300px] w-full object-cover object-center group-hover:opacity-75"
-                        />
-                      </div>
-                      <hr className="w-[80%] mx-auto" />
-                      <div className="mt-2 flex justify-center pl-[10px] py-1 overflow-hidden">
-                        <div>
-                          <p className="mt-1 text-sm text-text-color opacity-60  text-center">
-                            {categoryProduct(item.idCategory)}
-                          </p>
-                          <h3 className="text-sm text-text-color text-center">
-                            <Link to={`/productdetail/${item._id}`}>
-                              <span
-                                aria-hidden="true"
-                                className="absolute inset-0"
-                              />
-                              {item.name}
-                            </Link>
-                          </h3>
+                {products.length != 0 ?
+                  <div className="mt-4 grid gap-y-10 gap-x-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+                    {products.map((item) => (
+                      <div
+                        key={item._id}
+                        className="group relative bg-color-card rounded-md shadow overflow-hidden"
+                      >
+                        <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-color-basic group-hover:opacity-75 lg:aspect-none lg:h-50">
+                          <img
+                            src={
+                              item.imagesDefault
+                                ? item.imagesDefault.secure_url
+                                : imgerror
+                            }
+                            className="h-[300px] w-full object-cover object-center group-hover:opacity-75"
+                          />
                         </div>
-                        {/* <p className="text-sm font-medium text-gray-900">{product.price}</p> */}
-                      </div>
+                        <hr className="w-[80%] mx-auto" />
+                        <div className="mt-2 flex justify-center pl-[10px] py-1 overflow-hidden">
+                          <div>
+                            <p className="mt-1 text-sm text-text-color opacity-60  text-center">
+                              {categoryProduct(item.idCategory)}
+                            </p>
+                            <h3 className="text-sm text-text-color text-center">
+                              <Link to={`/productdetail/${item._id}`}>
+                                <span
+                                  aria-hidden="true"
+                                  className="absolute inset-0"
+                                />
+                                {item.name}
+                              </Link>
+                            </h3>
+                          </div>
+                          {/* <p className="text-sm font-medium text-gray-900">{product.price}</p> */}
+                        </div>
 
-                      <div>
-                        <Link to={`/productdetail/${item._id}`}>
-                          <button
-                            type="button"
-                            className="bg-color-button hover:bg-blue-400 text-text-color font-bold py-2 px-4 text-center mr-2  w-[100%] rounded-none "
-                          >
-                            <FontAwesomeIcon icon={faMagnifyingGlass} /> Xem
-                            thêm
-                          </button>
-                        </Link>
+                        <div>
+                          <Link to={`/productdetail/${item._id}`}>
+                            <button
+                              type="button"
+                              className="bg-color-button hover:bg-blue-400 text-text-color font-bold py-2 px-4 text-center mr-2  w-[100%] rounded-none "
+                            >
+                              <FontAwesomeIcon icon={faMagnifyingGlass} /> Xem
+                              thêm
+                            </button>
+                          </Link>
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div> : <LoadingPage size={32} />}
               </main>
             </div>
           </div>
@@ -275,11 +276,10 @@ const Filters = (props) => {
                 <button
                   href="#"
                   aria-current="page"
-                  className={`px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border ${
-                    currentPage === 1
+                  className={`px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border ${currentPage === 1
                       ? "bg-gray-100 text-gray-700"
                       : "border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-                  } rounded-l-lg`}
+                    } rounded-l-lg`}
                   onClick={() => handleClick(currentPage - 1)}
                   disabled={currentPage === 1}
                 >
@@ -290,11 +290,10 @@ const Filters = (props) => {
               <li>
                 <button
                   href="#"
-                  className={`px-3 py-2 leading-tight text-gray-500 bg-white border ${
-                    currentPage === totalPages
+                  className={`px-3 py-2 leading-tight text-gray-500 bg-white border ${currentPage === totalPages
                       ? "bg-gray-100 text-gray-700"
                       : "border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-                  } rounded-r-lg`}
+                    } rounded-r-lg`}
                   onClick={() => handleClick(currentPage + 1)}
                   disabled={currentPage === totalPages}
                 >
