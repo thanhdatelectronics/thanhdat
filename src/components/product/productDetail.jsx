@@ -182,6 +182,8 @@ const ProductDetail = () => {
                       </TabsHeader>
                       <TabsBody >
                         <TabPanel value="mota">
+                          <span>Mô tả</span>
+                          <br/>
                           <div
                             dangerouslySetInnerHTML={{
                               __html: `${product.description}`,
