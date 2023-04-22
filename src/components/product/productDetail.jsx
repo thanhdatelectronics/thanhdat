@@ -171,32 +171,37 @@ const ProductDetail = () => {
                   <div className="px-6 pb-6 mt-6 border-t w-[100%] border-gray-300 ">
                     <Tabs value="mota">
                       <TabsHeader>
-                        <Tab value="mota" classes={{root: "bg-none",}}>
-                          <div className="flex items-center gap-2">Mô tả</div>
+                        <Tab value="mota">Mô tả
                         </Tab>
-                        <Tab value="danhgia" classes={{root: "bg-none",}}>
-                          <div className="flex items-center gap-2">
+                        <Tab value="danhgia" className="z-30">
                             Đánh giá
-                          </div>
                         </Tab>
                       </TabsHeader>
-                      <TabsBody >
-                        <TabPanel value="mota">
-                          <span>Mô tả</span>
-                          <br/>
-                          <div
-                            dangerouslySetInnerHTML={{
-                              __html: `${product.description}`,
-                            }}
-                          ></div>
-                        </TabPanel >
-                      </TabsBody>
-                      <TabsBody >
-                        <TabPanel value="danhgia" >
-                          <ShowFeedBack idproductfeedback={product._id} />
-                          <FeedBack idproduct={product._id} />
-                        </TabPanel>
-                      </TabsBody>
+                        <TabsBody animate={{
+                          initial: { y: 250 },
+                          mount: { y: 0 },
+                          unmount: { y: 250 },
+                        }}>
+                          <TabPanel value="mota">
+                            <span>Mô tả</span>
+                            <br />
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: `${product.description}`,
+                              }}
+                            ></div>
+                          </TabPanel >
+                        </TabsBody >
+                        <TabsBody animate={{
+                          initial: { y: 250 },
+                          mount: { y: 0 },
+                          unmount: { y: 250 },
+                        }}>
+                          <TabPanel value="danhgia" >
+                            <ShowFeedBack idproductfeedback={product._id} />
+                            <FeedBack idproduct={product._id} />
+                          </TabPanel>
+                        </TabsBody>
                     </Tabs>
                   </div>
                 </div>
