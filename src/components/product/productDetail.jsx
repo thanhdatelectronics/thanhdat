@@ -169,19 +169,19 @@ const ProductDetail = () => {
                     </div>
                   </div>
                   <div className="px-6 pb-6 mt-6 border-t w-[100%] border-gray-300 ">
-                    <Tabs  value="dashboard">
+                    <Tabs value="mota">
                       <TabsHeader>
-                        <Tab value={"mota"} classes={{root: "bg-none",}}>
+                        <Tab value="mota" classes={{root: "bg-none",}}>
                           <div className="flex items-center gap-2">Mô tả</div>
                         </Tab>
-                        <Tab value={"danhgia"} classes={{root: "bg-none",}}>
+                        <Tab value="danhgia" classes={{root: "bg-none",}}>
                           <div className="flex items-center gap-2">
                             Đánh giá
                           </div>
                         </Tab>
                       </TabsHeader>
                       <TabsBody >
-                        <TabPanel value={"mota"}>
+                        <TabPanel value="mota">
                           <div
                             dangerouslySetInnerHTML={{
                               __html: `${product.description}`,
@@ -190,7 +190,7 @@ const ProductDetail = () => {
                         </TabPanel >
                       </TabsBody>
                       <TabsBody >
-                        <TabPanel value={"danhgia"} >
+                        <TabPanel value="danhgia" >
                           <ShowFeedBack idproductfeedback={product._id} />
                           <FeedBack idproduct={product._id} />
                         </TabPanel>
